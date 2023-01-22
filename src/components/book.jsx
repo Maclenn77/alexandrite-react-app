@@ -12,7 +12,6 @@ const Book = ({ book }) => {
 
     return (
         <div className="Lesson-Panel">
-            <h2>Catálogo de libros</h2>
             <div className="book-info">
                 <h3 className="title">{book.title}</h3>
                 <p>{book.authors.map((author) => (

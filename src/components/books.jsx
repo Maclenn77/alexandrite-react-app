@@ -15,6 +15,7 @@ const Books = () => {
 
     return (
         <div className="bg">
+            <h2>Catálogo de libros</h2>
             {books.map((book) => (
                 <Book key={book.item_id} book={book} />
             ))}
