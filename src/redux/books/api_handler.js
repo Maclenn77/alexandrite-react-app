@@ -4,10 +4,11 @@ const queryFormat = (key, query) => `?key=${key}&query=${query}`;
 /* Create a book with data from Google API or OCLC API */
 export const postBook = async (key, query) => {
 
-    const data = await fetch(queryFormat(key, query), {
+    const data = await fetch(`${apiURL}books/create${queryFormat(key, query)}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': 'http://localhost:3000/books/create'
         }
     }).then((response) => response.json());
 
