@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooksApi } from "../redux/books/books";
+import BulkForm from "./add_bulk_form";
+import Form from "./add_form";
 import Book from "./book";
 
 const Books = () => {
@@ -15,10 +17,12 @@ const Books = () => {
   return (
     <div className="bg">
       <h2>Catálogo de libros</h2>
+      <Form />
       {books.map((book: any) => (
         <Book key={book.item_id} book={book} />
       ))}
       <div className="Line-2" />
+      <BulkForm />
     </div>
   );
 };
