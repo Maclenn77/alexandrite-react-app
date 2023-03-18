@@ -1,5 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { IBook } from "../../types/books";
+import type { BulkBooksBody } from "../../types/bookApi";
+import type { IBook } from "../../types/books";
 import { booksBaseQuery } from "./baseQuery";
 
 const booksApi = createApi({
@@ -16,6 +17,14 @@ const booksApi = createApi({
         url: `books/create${queryParams}`,
         method: "POST",
       }),
+      invalidatesTags: [{ type: "Book"}]
+    }),
+    createBulkBooks: builder.mutation<IBook[], BulkBooksBody>({
+      query: (books) => ({
+        url: `books/bulk`,
+        method: "POST",
+        body: books
+      })
     }),
     deleteBook: builder.mutation<void, string>({
       query: (bookId) => ({
@@ -31,6 +40,7 @@ export const {
   useGetBooksQuery,
   useCreateBookMutation,
   useDeleteBookMutation,
+  useCreateBulkBooksMutation
 } = booksApi;
 
 export default booksApi;

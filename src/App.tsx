@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Books from './pages/Books'
 import Home from './pages/Home'
 import Layout from './layouts/Layout'
+import Books from './pages/Books'
 
 export const App = () => {
   return (
