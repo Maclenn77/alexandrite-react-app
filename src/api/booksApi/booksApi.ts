@@ -5,9 +5,11 @@ import { booksBaseQuery } from "./baseQuery";
 const booksApi = createApi({
   reducerPath: "booksApi",
   baseQuery: booksBaseQuery,
+  tagTypes: ["Book"],
   endpoints: (builder) => ({
     getBooks: builder.query<Array<IBook>, void>({
       query: () => "",
+      providesTags: [{ type: "Book" }],
     }),
     createBook: builder.mutation<IBook, string>({
       query: (queryParams) => ({
@@ -20,6 +22,7 @@ const booksApi = createApi({
         url: `books/delete?key=book_id&query=${bookId}`,
         method: "DELETE",
       }),
+      invalidatesTags: [{ type: "Book" }],
     }),
   }),
 });
