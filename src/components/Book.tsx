@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import { useDispatch } from "react-redux";
-import { removeBookApi } from "../redux/books/books";
+import { useDeleteBookMutation } from "../api/booksApi/booksApi";
 import { IBook } from "../types/books";
 
 interface IBookComponent {
@@ -8,11 +7,10 @@ interface IBookComponent {
 }
 
 const Book: FC<IBookComponent> = ({ book }) => {
-  const dispatch = useDispatch();
-  const removeBookFromStore = () => {
-    dispatch(removeBookApi(book.id) as any);
+  const [deleteBook] = useDeleteBookMutation();
+  const handleDelete = () => {
+    deleteBook(book.book_id);
   };
-
   return (
     <div className="Lesson-Panel">
       <div className="book-info">
@@ -46,7 +44,7 @@ const Book: FC<IBookComponent> = ({ book }) => {
           <div className="source">{book.dataSource}</div>
         </div>
       </div>
-      <button type="button" className="actions" onClick={removeBookFromStore}>
+      <button type="button" className="actions" onClick={handleDelete}>
         Remove
       </button>
       <button type="button" className="actions">
