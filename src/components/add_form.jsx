@@ -19,11 +19,11 @@ const Form = () => {
     };
     return (
         <form className="add-form">
-            <h2 className="add-Title">ADD NEW BOOK</h2>
+            <h2 className="add-Title">Añade un nuevo libro</h2>
             <div className="input-area">
-                <input type="text" value={key} onChange={keyChange} placeholder="Choice ISBN, ISSN, etc" id="key" />
-                <input type="text" value={query} onChange={queryChange} placeholder="Value" id="query" />
-                <button type="submit" onClick={submitBookToStore}><span className="ADD-BOOK">ADD BOOK</span></button>
+                <input type="text" value={key} onChange={keyChange} placeholder="ISBN, ISSN, etc" id="key" />
+                <input type="text" value={query} onChange={queryChange} placeholder="012981772313" id="query" />
+                <button type="submit" onClick={submitBookToStore}><span className="ADD-BOOK">Añadir</span></button>
             </div>
         </form>
     );

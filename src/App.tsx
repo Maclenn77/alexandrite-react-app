@@ -1,16 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Books from "./components/books";
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Books from './pages/Books'
+import Home from './pages/Home'
+import Layout from './layouts/Layout'
 
-const App = () => (
-  <Router>
-    <div className="bg-slate-500">
-      <h1 className="text-3xl p-10">Biblioteca Comunitaria "La Ceiba"</h1>
-      <Routes>
+export const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="/catalogo" element={<Books />} />
-      </Routes>
-    </div>
-  </Router>
-);
-
-export default App;
+      </Route>
+    </Routes>
+  )
+}

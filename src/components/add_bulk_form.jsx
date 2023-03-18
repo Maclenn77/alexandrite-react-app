@@ -19,11 +19,11 @@ const BulkForm = () => {
     };
     return (
         <form className="add-form">
-            <h2 className="add-Title">ADD NEW BOOK</h2>
+            <h2 className="add-Title">Añade varios libros</h2>
             <div className="input-area">
                 <input type="text" value={key} onChange={keyChange} placeholder="Choice ISBN, ISSN, etc" id="key" />
                 <input type="file" onChange={fileChange} placeholder="File" id="file" />
-                <button type="submit" onClick={submitBulkBooksToStore}><span className="ADD-BOOKS">ADD BOOKS</span></button>
+                <button type="submit" onClick={submitBulkBooksToStore}><span className="ADD-BOOKS">Añadir</span></button>
             </div>
         </form>
     );
