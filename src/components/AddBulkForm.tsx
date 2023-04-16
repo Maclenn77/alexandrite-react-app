@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addManyBooksApi } from '../redux/books/books';
+import { useCreateBulkBooksMutation } from '../api/booksApi/booksApi';
 
 const BulkForm = () => {
     const [key, setKey] = useState('');
     const [file, setFile] = useState('');
-    const keyChange = (e) => { setKey(e.target.value); };
-    const fileChange = (e) => { setFile(e.target.files[0]); };
+    const keyChange = (e: any) => { setKey(e.target.value); };
+    const fileChange = (e: any) => { setFile(e.target.files[0]); };
 
-    const dispatch = useDispatch();
-    const submitBulkBooksToStore = (e) => {
-        e.preventDefault();
-        const Books = {
-            key: key,
+
+    const [createBulkBooks] = useCreateBulkBooksMutation();
+
+    const handleSubmit = () => {
+        const body = {
+            key,
             data: file
-        };
-        dispatch(addManyBooksApi(Books));
-    };
+        }
+        createBulkBooks(body)
+    }
+    
     return (
         <form className="add-form">
             <h2 className="add-Title">Añade varios libros</h2>
             <div className="input-area">
                 <input type="text" value={key} onChange={keyChange} placeholder="Choice ISBN, ISSN, etc" id="key" />
                 <input type="file" onChange={fileChange} placeholder="File" id="file" />
-                <button type="submit" onClick={submitBulkBooksToStore}><span className="ADD-BOOKS">Añadir</span></button>
+                <button type="submit" onClick={handleSubmit}><span className="ADD-BOOKS">Añadir</span></button>
             </div>
         </form>
     );

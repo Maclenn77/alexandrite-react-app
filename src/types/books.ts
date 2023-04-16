@@ -1,14 +1,19 @@
-export interface IBookInstance {
-  item_id: number;
+export interface IBook {
+  id: number;
+  book_id: string;
   title: string;
   authors: string[];
-  categories: string[];
-  date: string;
   publisher: string;
-  country: string;
   description: string;
+  language: string;
+  country: string;
   isbn10: string;
   isbn13: string;
-  data_source: string;
   ddc: string;
+  lcc: string;
+  categories: string[];
+  pageCount: number;
+  publishDate: string;
+  suggestedClassifications: string[];
+  dataSource: string;
 }

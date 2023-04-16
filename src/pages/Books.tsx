@@ -1,26 +1,23 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Book from '../components/Book'
-import { getBooksApi } from '../redux/books/books'
+import React from "react";
+import { useGetBooksQuery } from "../api/booksApi/booksApi";
+import BulkForm from "../components/AddBulkForm";
+import Form from "../components/AddForm";
+import Book from "../components/Book";
 
 const Books = () => {
-  const books = useSelector((state: any) => state.booksReducer)
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getBooksApi() as any)
-  }, [])
+  const { data: books } = useGetBooksQuery();
 
   return (
-    <div className="flex h-screen">
+    <div className="bg">
       <h2>Catálogo de libros</h2>
-      {books.map((book: any) => (
-        <Book key={book.item_id} book={book} />
+      <Form />
+      {books?.map((book: any) => (
+        <Book key={`book-${book.id}`} book={book} />
       ))}
       <div className="Line-2" />
+      <BulkForm />
     </div>
-  )
-}
+  );
+};
 
-export default Books
+export default Books;
